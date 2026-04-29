@@ -23,26 +23,9 @@ license: MIT
 
 Google **Nano Banana 2 Edit** — the image-to-image edit endpoint of the Gemini-family flash-tier image model — hosted on the **RunComfy Model API**. Up to **20 input images per call** for batch edits and multi-reference variation.
 
-**This skill bundles the model's documented prompting patterns** — preservation-first language, spatial scope localization, batch consistency, sibling-routing — so the agent gets the model's strongest output on the first or second try, instead of burning credits on prompts the model wasn't going to nail.
-
-## Install
-
 ```bash
 npx skills add agentspace-so/runcomfy-skills --skill nano-banana-edit -g
 ```
-
-## Why this skill (vs calling the model raw)
-
-A bare `runcomfy run google/nano-banana-2/edit --input '{"prompt":"...","image_urls":["..."]}'` runs, but you'll spend several iterations relearning what the edit endpoint actually responds to. This skill packs that knowledge in:
-
-- **Preservation-first language** — start the prompt with what to **keep** (identity, pose, brand, framing), then state what to change. The model holds composition stable when told what NOT to touch.
-- **Spatial scope localization** — "background only", "remove the left object", "change shirt color only" beats "make it cyberpunk". Narrower scope = sharper edit.
-- **Batch consistency** — pass up to **20 source images** in `image_urls`. Lock `aspect_ratio` and `resolution` across the batch so outputs feel like a series, not a grab-bag.
-- **Iterative refinement** — if edits drift, **reduce scope and iterate** in multiple short prompts rather than piling up one long edit instruction.
-- **Web-grounding for current-event edits** — `enable_web_search: true` when the edit references something fresh.
-- **Sibling routing** — when Nano Banana Edit wins (preserve identity + scope-targeted edit, batch-consistent edits) vs when GPT Image 2 edit / Flux Kontext / t2i beat it (multilingual text editing, single-shot precise local edits, generating from scratch).
-
-The agent calling this skill gets the model's strongest output on the first or second iteration — same model, sharper result.
 
 ## When to pick this model (vs siblings)
 

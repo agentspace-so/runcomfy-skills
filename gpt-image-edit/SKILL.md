@@ -24,26 +24,9 @@ license: MIT
 
 OpenAI **GPT Image 2 — `/edit` endpoint** (ChatGPT Images 2.0 image-to-image) on the **RunComfy Model API**. Strongest in its class at preserving identity through targeted edits and rewriting embedded text in any script (Latin, kana, CJK, Cyrillic, Arabic).
 
-**This skill bundles the model's documented prompting patterns** — preservation-first language, multilingual text-edit instructions, multi-reference numbering, sibling-routing — so the agent gets the model's strongest output on the first or second try.
-
-## Install
-
 ```bash
 npx skills add agentspace-so/runcomfy-skills --skill gpt-image-edit -g
 ```
-
-## Why this skill (vs calling the model raw)
-
-A bare `runcomfy run openai/gpt-image-2/edit --input '{"prompt":"...","images":["..."]}'` runs, but you'll spend several iterations relearning what the edit endpoint actually responds to. This skill packs that knowledge in:
-
-- **Preservation goals lead the prompt.** "Keep face / pose / brand mark untouched" stops the model from accidentally rewriting what you wanted to keep.
-- **Multilingual text edit** — quote the exact characters, name the script (`Japanese kana`, `Cyrillic`, `Arabic right-to-left`). GPT Image 2 is the strongest in its class at this.
-- **Multi-ref up to 10** — number the images in the prompt: `"subject from image 1, lighting from image 2"`. The model routes cues correctly.
-- **Directional language for spatial edits.** "Move the headline from top-right to bottom-center", not "reposition the headline".
-- **Schema** — `prompt` + `images` (array of HTTPS URLs, up to 10) + optional `size` (3 fixed values + `auto`).
-- **Sibling routing** — when GPT Image Edit wins (multilingual text edit, identity preservation across multilingual variants, layout-precise edits) vs when Nano Banana Edit / Flux Kontext / t2i beat it (batch up to 20, single-shot precise edit, generating new compositions).
-
-The agent calling this skill gets the model's strongest output on the first or second try — same model, sharper result.
 
 ## When to pick this model (vs siblings)
 

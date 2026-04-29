@@ -25,10 +25,6 @@ license: MIT
 
 **Video edit, intent-routed.** This skill doesn't lock you to one model — it picks the right video-edit model in the RunComfy catalog based on what the user actually wants: general restyle, motion transfer from a reference clip, or lightweight identity-stable outfit / background swap.
 
-**This skill bundles each model's documented prompting patterns** — preservation-first phrasing, single-edit-direction discipline, motion-reference video specs, identity-stable restyle templates — so the agent gets the model's strongest output on the first or second try, instead of burning credits on the wrong model OR a naive prompt.
-
-## Install
-
 ```bash
 npx skills add agentspace-so/runcomfy-skills --skill video-edit -g
 ```
@@ -197,23 +193,6 @@ runcomfy run decart/lucy-edit/restyle \
 - **No aspect ratio control** — output matches input. Cropping happens server-side if you don't pre-match.
 
 ---
-
-## Why this skill (vs calling models raw)
-
-A bare video-edit call works, but you'll spend several iterations:
-
-1. **Picking the wrong model** — running Wan 2.7 Edit when the user actually wanted **motion transfer** (Kling motion-control), or running Kling on a simple background swap (overkill, wrong semantics).
-2. **Wrong schema field per model** — `video` vs `video_url` vs `image` + `video` + `character_orientation`. Easy to fat-finger and 422.
-3. **Wrong prompt grammar** — Wan rewards single-direction with explicit preservation; Kling rewards bare motion description with subject > 5% frame; Lucy rewards localized-bucket phrasing.
-
-This skill packs:
-
-- **Intent → model routing** — agent picks the right model from user's described intent.
-- **Per-model schema** — different field names spelled out.
-- **Per-model prompting tips** — what each model rewards.
-- **Brand sibling routing** — if user named a specific model, defer to the brand skill.
-
-The agent calling this skill gets the right model + the right prompt shape on the first or second iteration.
 
 ## Default behavior for the calling agent
 

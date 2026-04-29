@@ -24,28 +24,9 @@ license: MIT
 
 **HappyHorse 1.0** — currently #1 on Artificial Analysis Video Arena (Elo 1333 t2v / 1392 i2v) — hosted on the **RunComfy Model API**. Native 1080p video with **in-pass synchronized audio** (dialogue, ambient, Foley) and multi-shot character consistency.
 
-**This skill bundles the model's documented prompting patterns** — motion-over-time language, camera-shot vocabulary, multi-shot consistency cues, sibling-routing — so the agent gets the model's strongest output on the first or second try, instead of burning credits on prompts the model wasn't going to nail.
-
-## Install
-
 ```bash
 npx skills add agentspace-so/runcomfy-skills --skill happyhorse-1-0 -g
 ```
-
-## Why this skill (vs calling the model raw)
-
-A bare `runcomfy run happyhorse/happyhorse-1-0/text-to-video --input '{"prompt":"..."}'` runs, but you'll spend several iterations relearning what HappyHorse responds to. This skill packs that knowledge in:
-
-- **Motion-over-time language** — describe what changes across frames (push-in, hand-off, gaze-shift), not a static frame description. HappyHorse rewards temporal verbs.
-- **Camera-shot vocabulary** — "wide shot", "medium close-up", "tracking shot", "crane move", "handheld", "locked tripod" all parse as direction.
-- **One-beat focus** — one primary visual beat per clip works better than competing actions. Multi-action prompts confuse motion synthesis.
-- **Multi-shot consistency cues** — re-state subject identity (wardrobe, color, distinctive feature) at every shot transition; HappyHorse holds it but needs the anchor.
-- **Audio-aware prompting** — the model generates synchronized audio in-pass; describe ambient sound and dialogue tone if you want them shaped.
-- **Multilingual** — 6 prompt languages supported (Chinese, English, Japanese, Korean, German, French) without quality drop.
-- **Schema constraints** — duration 3–15s only, aspect ratios from a fixed list (16:9 / 9:16 / 1:1 / 4:3 / 3:4), 720p or 1080p only.
-- **Sibling routing** — when HappyHorse wins (multi-shot stories, native audio, blind-vote leader) vs when Wan 2.7 / Seedance 2 / LTX 2 beat it (specific motion priors, character binding, fast iteration).
-
-The agent calling this skill gets the model's strongest output on the first or second try — same model, sharper result.
 
 ## When to pick this model (vs siblings)
 

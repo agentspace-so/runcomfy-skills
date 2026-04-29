@@ -25,28 +25,9 @@ license: MIT
 
 Google **Nano Banana 2** — the flash-tier text-to-image model in the Gemini family — hosted on the **RunComfy Model API**. Optimized for ideation, social-thumbnail batches, and rapid drafts with strong in-image typography.
 
-**This skill bundles the model's documented prompting patterns** — subject-first declarative grammar, exact-text-quoting for typography, web-grounding when needed, sibling-routing — so the agent gets the model's strongest output on the first or second try, instead of burning credits on prompts the model wasn't going to nail.
-
-## Install
-
 ```bash
 npx skills add agentspace-so/runcomfy-skills --skill nano-banana-2 -g
 ```
-
-## Why this skill (vs calling the model raw)
-
-A bare `runcomfy run google/nano-banana-2/text-to-image --input '{"prompt":"..."}'` runs, but you'll spend several iterations relearning what Nano Banana 2 actually responds to. This skill packs that knowledge in:
-
-- **Subject-first structure** — `Subject → action → environment → style → camera/lighting`. Front-load the subject, trail with directives.
-- **Exact text quoting** — for in-image typography, **quote the exact characters** and specify placement (`"the headline 'OPEN STUDIO' centered, large, bold sans-serif"`).
-- **Resolution tier choice** — `0.5K` (cheap drafts) → `1K` (default) → `2K` / `4K` (final). Higher resolution costs proportionally more — the agent picks tier by intent, not always max.
-- **Aspect ratio is concrete** — 11 supported values (`auto`, `21:9`, `16:9`, `3:2`, `4:3`, `5:4`, `1:1`, `4:5`, `3:4`, `2:3`, `9:16`). The agent maps user intent to one of these — never asks for arbitrary ratios.
-- **`num_images` for variant tests** — 1–4 per request. Use 4 for ideation rounds; 1 for final.
-- **`enable_web_search`** — turn on when the prompt references current events / real entities the model wouldn't have memorized. Costs extra; off by default.
-- **`safety_tolerance`** — 1 (strict) to 6 (permissive). Default 4. Route to a higher value only when content is genuinely benign and getting incorrectly blocked.
-- **Sibling routing** — when Nano Banana 2 wins (rapid drafts, social thumbnails, batch variants, in-image text) vs when Nano Banana Pro / GPT Image 2 / Flux 2 / Seedream beat it (image edit precision, multilingual signage, stylization, max resolution).
-
-The agent calling this skill gets the model's strongest output on the first or second iteration — same model, sharper result.
 
 ## When to pick this model (vs siblings)
 

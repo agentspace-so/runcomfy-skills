@@ -23,28 +23,9 @@ license: MIT
 
 Wan-AI's **Wan 2.7** — flagship video model with multi-reference conditioning and audio-driven lip-sync — hosted on the **RunComfy Model API**.
 
-**This skill bundles the model's documented prompting patterns** — motion + camera language, audio-track synchronization, prompt-expansion strategy, sibling-routing — so the agent gets the model's strongest output on the first or second try, instead of burning credits on prompts the model wasn't going to nail.
-
-## Install
-
 ```bash
 npx skills add agentspace-so/runcomfy-skills --skill wan-2-7 -g
 ```
-
-## Why this skill (vs calling the model raw)
-
-A bare `runcomfy run wan-ai/wan-2-7/text-to-video --input '{"prompt":"..."}'` runs, but you'll spend several iterations relearning what Wan 2.7 actually responds to. This skill packs that knowledge in:
-
-- **Audio-driven lip-sync** — pass an `audio_url` (WAV/MP3, 3–30s, ≤15MB). Wan 2.7 generates video that lip-syncs to the supplied track. Siblings like Seedance generate audio in-pass; Wan accepts your own audio.
-- **Motion + camera language** — "slow dolly in", "locked tripod", "handheld follow" parse as direction. Front-load the shot type.
-- **One primary action per clip** — "the woman walks AND the dog runs AND a bus passes" confuses motion synthesis. One beat per clip.
-- **Negative prompts work** — `"no subtitles, no flicker, no distorted hands"` — concrete issues, not aesthetic exclusions.
-- **Prompt expansion (default on)** — the model rewrites short prompts into richer ones automatically. Disable with `enable_prompt_expansion: false` when you want literal control.
-- **Schema constraints** — duration 2–15s, resolution 720p/1080p, 5 fixed aspect ratios, prompt cap ~5000 chars / ~1500 tokens.
-- **Platform-aware aspect ratios** — 9:16 for shorts/Reels/TikTok, 16:9 for landscape ads, 1:1 for square feeds.
-- **Sibling routing** — when Wan 2.7 wins (audio-driven lip-sync from your track, multi-reference fine motion control, smoother transitions) vs when HappyHorse / Seedance / Kling / LTX 2 beat it (blind-vote leader, in-pass audio, motion editing on existing footage, fast iteration).
-
-The agent calling this skill gets the model's strongest output on the first or second try — same model, sharper result.
 
 ## When to pick this model (vs siblings)
 

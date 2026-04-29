@@ -25,25 +25,9 @@ license: MIT
 
 Black Forest Labs' **Flux 1 Kontext Pro** — single-reference precise local image edit — hosted on the **RunComfy Model API**. Strong prompt control, consistent outputs, high fidelity.
 
-**This skill bundles the model's documented prompting patterns** — single-shot edit instruction, preservation language, sibling-routing — so the agent gets the model's strongest output on the first or second try, instead of burning credits on prompts the model wasn't going to nail.
-
-## Install
-
 ```bash
 npx skills add agentspace-so/runcomfy-skills --skill flux-kontext -g
 ```
-
-## Why this skill (vs calling the model raw)
-
-Flux Kontext is the **single-reference, single-shot** precise edit model. Pick a target image, write one clear edit instruction, get a high-fidelity result. This skill packs that model knowledge in:
-
-- **Single image input** — Kontext takes ONE source image (vs. Nano Banana Edit's 1–20). Use it when the edit is a focused single-image transformation, not a batch operation.
-- **One clean instruction** — Kontext is at its best with one declarative edit ("She is now holding an orange umbrella and smiling"). Long compound instructions drift; split them.
-- **Preservation language still applies** — `"Keep the person's face and pose unchanged. Add an orange umbrella in her left hand and a slight smile."` Lead with what stays.
-- **Aspect ratio enum** — pick from the supported list; out-of-list gets cropped or 422'd.
-- **Sibling routing** — when Flux Kontext wins (single-shot precise local edit, high-fidelity preservation) vs when Nano Banana Edit / GPT Image 2 edit / Flux 2 Klein beat it (batch edits up to 20, multilingual text editing, generating new compositions).
-
-The agent calling this skill gets the model's strongest output on the first or second try — same model, sharper result.
 
 ## When to pick this model (vs siblings)
 

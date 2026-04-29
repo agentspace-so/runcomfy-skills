@@ -24,26 +24,9 @@ license: MIT
 
 ByteDance **Seedance 2.0 Pro** — multimodal cinematic video generator with native lip-synced audio — hosted on the **RunComfy Model API**.
 
-**This skill bundles the model's documented prompting patterns** — image/video/audio reference division of labor, camera-language cues, lip-sync prompting, sibling-routing — so the agent gets the model's strongest output on the first or second try, instead of burning credits on prompts the model wasn't going to nail.
-
-## Install
-
 ```bash
 npx skills add agentspace-so/runcomfy-skills --skill seedance-v2 -g
 ```
-
-## Why this skill (vs calling the model raw)
-
-A bare `runcomfy run bytedance/seedance-v2/pro --input '{"prompt":"..."}'` runs, but you'll spend several iterations relearning what Seedance responds to. This skill packs that knowledge in:
-
-- **Image vs text division of labor** — use **images** for what must stay stable (face, costume, logo); use **text** for what should evolve (action, mood, lighting). Don't try to describe a stable face in prose.
-- **Multi-modal reference budget** — up to **9 images, 3 videos (2–15s each), 3 audio (≤15MB each)**. Use them; don't waste budget cramming everything into the prompt.
-- **Camera language is real** — "medium close-up", "slow push-in", "handheld vs locked-off" parse as direction.
-- **Lip-sync prompting** — when `generate_audio: true`, name the dialogue tone you want ("warm, friendly", "sharp, instructional"). The model lip-syncs in-pass — it doesn't need a separate audio input unless you want a specific voice.
-- **Schema constraints** — duration 4–15s only, resolution 480p/720p, prompts CN ≤500 chars or EN ≤1000 words.
-- **Sibling routing** — when Seedance wins (lip-sync ads, multi-modal ref, branded narrative) vs when HappyHorse 1.0 / Wan 2.7 / Kling beat it (blind-vote quality leader, audio-driven lip-sync, motion editing).
-
-The agent calling this skill gets the model's strongest output on the first or second try — same model, sharper result.
 
 ## When to pick this model (vs siblings)
 

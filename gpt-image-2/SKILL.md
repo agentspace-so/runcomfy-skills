@@ -24,26 +24,9 @@ license: MIT
 
 OpenAI **GPT Image 2** (ChatGPT Images 2.0) hosted on the **RunComfy Model API** — no OpenAI key, async REST.
 
-**This skill bundles the model's documented prompting patterns** — quoted embedded text, single-attribute iteration, preservation language on edits, sibling-routing — so the agent gets the model's strongest output on the first or second try, instead of burning iterations on prompts the model wasn't going to nail.
-
-## Install
-
 ```bash
 npx skills add agentspace-so/runcomfy-skills --skill gpt-image-2 -g
 ```
-
-## Why this skill (vs calling the model raw)
-
-A bare `runcomfy run openai/gpt-image-2/text-to-image --input '{"prompt":"..."}'` runs, but you'll spend several iterations learning what the model actually responds to. This skill packs that knowledge in:
-
-- **The 3 supported sizes** — anything else 422s. The agent maps "portrait / vertical" → `1024_1536`, "landscape / banner" → `1536_1024`, default → `1024_1024`. No 422 round-trips.
-- **Quote embedded text exactly**, name the script for non-Latin (`Japanese kana`, `Cyrillic`, `Arabic right-to-left`). The model is the strongest in its class on text-in-image, but only when the literal characters are quoted.
-- **Single-attribute iteration** — change one knob per refinement (lighting OR background OR pose OR text), keep the rest verbatim. Composition stays stable across iterations.
-- **Preservation language on edits** — explicit "keep the face / pose / brand mark untouched" stops the model from accidentally rewriting what you wanted to keep.
-- **Multi-ref edit numbering** — "subject from image 1, lighting and background from image 2" routes the cues correctly across up to 10 input images.
-- **Sibling routing** — when GPT Image 2 wins (text, brand assets, ads, multilingual signage) vs when Flux 2 / Nano Banana Pro / Seedream beat it (stylization, photorealistic portraits, cinematic hero shots).
-
-The agent calling this skill gets the model's strongest output on the first or second iteration — same model, sharper result.
 
 ## When to pick this model (vs siblings)
 

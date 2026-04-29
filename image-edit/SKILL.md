@@ -26,10 +26,6 @@ license: MIT
 
 **Image edit, intent-routed.** This skill doesn't lock you to one model — it picks the right edit model in the RunComfy catalog based on what the user actually wants: batch identity-preservation, multilingual text rewrite, single-shot precise edit, or mask-driven region replacement.
 
-**This skill bundles each model's documented prompting patterns** — preservation-first phrasing, multi-ref numbering, mask + strength tuning, multilingual text quoting — so the agent gets the model's strongest output on the first or second try, instead of burning iterations on the wrong model OR a naive prompt.
-
-## Install
-
 ```bash
 npx skills add agentspace-so/runcomfy-skills --skill image-edit -g
 ```
@@ -242,23 +238,6 @@ runcomfy run tongyi-mai/z-image/turbo/inpainting \
 - **Spatial labels still help** even though the mask defines the region: `"the left shelf"`, `"upper-right quadrant"`.
 
 ---
-
-## Why this skill (vs calling models raw)
-
-A bare edit call works, but you'll spend several iterations:
-
-1. **Picking the wrong model** — running Flux Kontext on a multilingual text rewrite (where GPT Image 2 Edit wins) or running GPT Image 2 Edit when you have a precise mask (where Z-Image Inpaint is built for it).
-2. **Wrong schema field name per model** — `images` (GPT Image 2) vs `image_urls` (Nano Banana) vs `image` (Flux Kontext) vs `image` + `mask_image` (Z-Image Inpaint). Easy to fat-finger and 422.
-3. **Wrong prompting pattern** — Flux Kontext rewards single-instruction terse prompts; GPT Image 2 Edit rewards quoted multilingual text; Z-Image Inpaint rewards strength-tuning + preservation phrasing of the surround.
-
-This skill packs:
-
-- **Intent → model routing** — agent picks the right model from user's described intent.
-- **Per-model schema** — different field names spelled out so the agent can't 422 on a fat-finger.
-- **Per-model prompting tips** — what each model rewards.
-- **Sibling routing back out** — if the user named a specific brand model (`Nano Banana Edit`, `Flux Kontext`, `GPT Image Edit`), defer to the brand skill for fuller depth.
-
-The agent calling this skill gets the right model + the right prompt shape on the first or second iteration.
 
 ## Default behavior for the calling agent
 

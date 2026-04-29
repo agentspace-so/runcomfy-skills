@@ -25,27 +25,9 @@ license: MIT
 
 Black Forest Labs' **Flux 2 Klein** (the distilled, low-latency variant of Flux 2) hosted on the **RunComfy Model API** — no API key, async REST.
 
-**This skill bundles the model's documented prompting patterns** — declarative subject-first prompts, step-count strategy by phase, multi-reference alignment rules, sibling-routing — so the agent gets the model's strongest output on the first or second try, instead of burning iterations on prompts the model wasn't going to nail.
-
-## Install
-
 ```bash
 npx skills add agentspace-so/runcomfy-skills --skill flux-2-klein -g
 ```
-
-## Why this skill (vs calling the model raw)
-
-A bare `runcomfy run blackforestlabs/flux-2-klein/9b/text-to-image --input '{"prompt":"..."}'` runs, but you'll spend several iterations relearning what Klein 9B and 4B actually respond to. This skill packs that knowledge in:
-
-- **9B vs 4B variant routing** — 4B is sub-second 4-step inference for fast iteration; 9B trades latency for fine detail. The agent picks based on user intent (concepting → 4B, polish → 9B).
-- **Step-count strategy** — 4–8 steps for fast concepting and exploration; ~25 steps for polish and final output. The model is *step-distilled*; running 50 steps doesn't buy linearly more quality.
-- **Declarative subject-first prompts** — "Subject + action + lighting + camera + quality" is the structure Flux 2 Klein was trained on. Front-load the subject, not the style.
-- **Multi-reference alignment** — Up to 4 reference images are supported, but mixing radically different aesthetic looks confuses edits. Keep references stylistically aligned.
-- **Token cap awareness** — ~512 tokens max for stable output; longer prompts degrade rather than help.
-- **Aspect ratio limits** — capped at 16:9; max ~2K resolution. The agent doesn't ask the model for 4K.
-- **Sibling routing** — when Flux 2 Klein wins (real-time art direction, interactive product viz, fast iteration) vs when Flux 2 Pro / Seedream 5 / GPT Image 2 beat it (extreme high-res, embedded text precision, hyperrealistic portraits).
-
-The agent calling this skill gets the model's strongest output on the first or second iteration — same model, sharper result.
 
 ## When to pick this model (vs siblings)
 

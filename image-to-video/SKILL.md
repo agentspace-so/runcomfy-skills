@@ -25,10 +25,6 @@ license: MIT
 
 **Image-to-video, intent-routed.** This skill doesn't lock you to one model — it picks the right i2v model in the RunComfy catalog based on what the user actually wants: portrait animation, custom-voiceover lip-sync, or multi-modal composition.
 
-**This skill bundles each model's documented prompting patterns** — motion-verb leading, identity-preservation, audio-track mapping, multi-ref numbering — so the agent gets the model's strongest output on the first or second try, instead of burning iterations on the wrong model OR a naive prompt.
-
-## Install
-
 ```bash
 npx skills add agentspace-so/runcomfy-skills --skill image-to-video -g
 ```
@@ -177,23 +173,6 @@ runcomfy run bytedance/seedance-v2/pro \
 - **Don't mix radically different aesthetics** — if image 1 is a watercolor and video 1 is photoreal, output drifts.
 
 ---
-
-## Why this skill (vs calling models raw)
-
-A bare i2v call like `runcomfy run happyhorse/happyhorse-1-0/image-to-video --input '{...}'` works, but you'll spend several iterations:
-
-1. **Picking the wrong model** — running HappyHorse for a custom-audio-driven lip-sync (which it can't do) or running Wan 2.7 for a pure portrait animation (where HappyHorse wins).
-2. **Wrong schema field** — passing `audio_url` to a model that doesn't accept it; wrong field names per model.
-3. **Wrong prompting pattern** — writing the same prompt for HappyHorse (motion-verb-led) and Seedance (image-vs-text division) when they reward different shapes.
-
-This skill packs:
-
-- **Intent → model routing** — agent picks the right model from the user's described intent.
-- **Per-model schema** — HappyHorse i2v vs Wan 2.7 t2v+audio vs Seedance 2.0 Pro have different field sets; the skill spells each out.
-- **Per-model prompting tips** — motion verbs for HappyHorse, talking-head framing for Wan, image-vs-text division for Seedance.
-- **Sibling routing back out** — if the user named a specific brand model (`HappyHorse`, `Wan 2.7 Pro`, etc.), defer to the brand skill.
-
-The agent calling this skill gets the right model + the right prompt shape on the first or second iteration.
 
 ## Default behavior for the calling agent
 
