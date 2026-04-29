@@ -1,6 +1,6 @@
 ---
 name: video-edit
-displayName: "🎬 Video Edit — Pro Pack on RunComfy"
+displayName: "Video Edit — Pro Pack on RunComfy"
 description: >
   Edit existing video on RunComfy — this skill is a smart router that
   matches the user's intent to the right edit model in the RunComfy
@@ -14,12 +14,11 @@ description: >
   through the local RunComfy CLI. Triggers on "video edit", "edit
   video", "restyle video", "swap video background", "motion control",
   "outfit swap video", or any explicit ask to transform a video.
-emoji: "🎬"
 homepage: https://www.runcomfy.com
 license: MIT
 ---
 
-# 🎬 Video Edit — Pro Pack on RunComfy
+# Video Edit — Pro Pack on RunComfy
 
 [runcomfy.com](https://www.runcomfy.com/?utm_source=skills.sh&utm_medium=skill&utm_campaign=video-edit) · [Wan 2.7 Edit-Video](https://www.runcomfy.com/models/wan-ai/wan-2-7/edit-video?utm_source=skills.sh&utm_medium=skill&utm_campaign=video-edit) · [Kling Motion-Control Pro](https://www.runcomfy.com/models/kling/kling-2-6/motion-control-pro?utm_source=skills.sh&utm_medium=skill&utm_campaign=video-edit) · [Lucy Edit Restyle](https://www.runcomfy.com/models/decart/lucy-edit/restyle?utm_source=skills.sh&utm_medium=skill&utm_campaign=video-edit) · [GitHub](https://github.com/agentspace-so/runcomfy-skills/tree/main/video-edit)
 

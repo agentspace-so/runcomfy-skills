@@ -1,6 +1,6 @@
 ---
 name: flux-kontext
-displayName: "🎨 Flux Kontext Pro — Pro Pack on RunComfy"
+displayName: "Flux Kontext Pro — Pro Pack on RunComfy"
 description: >
   Edit images with Flux 1 Kontext Pro (Black Forest Labs' precise local
   image-edit model) on RunComfy — bundled with the model's documented
@@ -14,12 +14,11 @@ description: >
   local RunComfy CLI. Triggers on "flux kontext", "flux-kontext",
   "flux 1 kontext", "kontext", "BFL kontext", or any explicit ask to
   edit with this model.
-emoji: "🎨"
 homepage: https://www.runcomfy.com
 license: MIT
 ---
 
-# 🎨 Flux Kontext Pro — Pro Pack on RunComfy
+# Flux Kontext Pro — Pro Pack on RunComfy
 
 [runcomfy.com](https://www.runcomfy.com/?utm_source=skills.sh&utm_medium=skill&utm_campaign=flux-kontext) · [Model page](https://www.runcomfy.com/models/blackforestlabs/flux-1-kontext-pro/image-to-image?utm_source=skills.sh&utm_medium=skill&utm_campaign=flux-kontext) · [GitHub](https://github.com/agentspace-so/runcomfy-skills/tree/main/flux-kontext)
 

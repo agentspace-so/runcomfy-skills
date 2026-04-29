@@ -1,6 +1,6 @@
 ---
 name: wan-2-7
-displayName: "🎬 Wan 2.7 — Pro Pack on RunComfy"
+displayName: "Wan 2.7 — Pro Pack on RunComfy"
 description: >
   Generate text-to-video with Wan 2.7 (Wan-AI's flagship motion model)
   on RunComfy. Documents Wan 2.7's strengths (multi-reference conditioning,
@@ -10,12 +10,11 @@ description: >
   instead. Calls `runcomfy run wan-ai/wan-2-7/text-to-video` through
   the local RunComfy CLI. Triggers on "wan", "wan 2.7", "wan-2-7",
   "wan video", or any explicit ask to generate video with this model.
-emoji: "🎬"
 homepage: https://www.runcomfy.com
 license: MIT
 ---
 
-# 🎬 Wan 2.7 — Pro Pack on RunComfy
+# Wan 2.7 — Pro Pack on RunComfy
 
 [runcomfy.com](https://www.runcomfy.com/?utm_source=skills.sh&utm_medium=skill&utm_campaign=wan-2-7) · [Text-to-video](https://www.runcomfy.com/models/wan-ai/wan-2-7/text-to-video?utm_source=skills.sh&utm_medium=skill&utm_campaign=wan-2-7) · [GitHub](https://github.com/agentspace-so/runcomfy-skills/tree/main/wan-2-7)
 

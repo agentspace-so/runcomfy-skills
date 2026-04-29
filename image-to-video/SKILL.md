@@ -1,6 +1,6 @@
 ---
 name: image-to-video
-displayName: "🎬 Image-to-Video — Pro Pack on RunComfy"
+displayName: "Image-to-Video — Pro Pack on RunComfy"
 description: >
   Animate any still image on RunComfy — this skill is a smart router
   that matches the user's intent to the right i2v model in the
@@ -14,12 +14,11 @@ description: >
   endpoint variant) through the local RunComfy CLI. Triggers on
   "image to video", "image-to-video", "i2v", "animate image", "make
   this move", or any explicit ask to turn a still into video.
-emoji: "🎬"
 homepage: https://www.runcomfy.com
 license: MIT
 ---
 
-# 🎬 Image-to-Video — Pro Pack on RunComfy
+# Image-to-Video — Pro Pack on RunComfy
 
 [runcomfy.com](https://www.runcomfy.com/?utm_source=skills.sh&utm_medium=skill&utm_campaign=image-to-video) · [HappyHorse I2V](https://www.runcomfy.com/models/happyhorse/happyhorse-1-0/image-to-video?utm_source=skills.sh&utm_medium=skill&utm_campaign=image-to-video) · [Wan 2.7](https://www.runcomfy.com/models/wan-ai/wan-2-7/text-to-video?utm_source=skills.sh&utm_medium=skill&utm_campaign=image-to-video) · [Seedance 2.0 Pro](https://www.runcomfy.com/models/bytedance/seedance-v2/pro?utm_source=skills.sh&utm_medium=skill&utm_campaign=image-to-video) · [GitHub](https://github.com/agentspace-so/runcomfy-skills/tree/main/image-to-video)
 

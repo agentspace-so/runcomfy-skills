@@ -1,6 +1,6 @@
 ---
 name: image-edit
-displayName: "🎨 Image Edit — Pro Pack on RunComfy"
+displayName: "Image Edit — Pro Pack on RunComfy"
 description: >
   Edit images on RunComfy — this skill is a smart router that matches
   the user's intent to the right edit model in the RunComfy catalog.
@@ -15,12 +15,11 @@ description: >
   "image-to-image", "i2i", "swap background", "remove object",
   "rewrite headline", or any explicit ask to edit a single or batch
   of images.
-emoji: "🎨"
 homepage: https://www.runcomfy.com
 license: MIT
 ---
 
-# 🎨 Image Edit — Pro Pack on RunComfy
+# Image Edit — Pro Pack on RunComfy
 
 [runcomfy.com](https://www.runcomfy.com/?utm_source=skills.sh&utm_medium=skill&utm_campaign=image-edit) · [Nano Banana Edit](https://www.runcomfy.com/models/google/nano-banana-2/edit?utm_source=skills.sh&utm_medium=skill&utm_campaign=image-edit) · [GPT Image 2 Edit](https://www.runcomfy.com/models/openai/gpt-image-2/edit?utm_source=skills.sh&utm_medium=skill&utm_campaign=image-edit) · [Flux Kontext](https://www.runcomfy.com/models/blackforestlabs/flux-1-kontext-pro/image-to-image?utm_source=skills.sh&utm_medium=skill&utm_campaign=image-edit) · [Z-Image Inpaint](https://www.runcomfy.com/models/tongyi-mai/z-image/turbo/inpainting?utm_source=skills.sh&utm_medium=skill&utm_campaign=image-edit) · [GitHub](https://github.com/agentspace-so/runcomfy-skills/tree/main/image-edit)
 

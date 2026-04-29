@@ -1,6 +1,6 @@
 ---
 name: gpt-image-2
-displayName: "🎨 GPT Image 2 — Pro Pack on RunComfy"
+displayName: "GPT Image 2 — Pro Pack on RunComfy"
 description: >
   Generate and edit images with OpenAI GPT Image 2 (ChatGPT Images 2.0)
   on RunComfy. Documents GPT Image 2's strengths (embedded text, logos,
@@ -11,12 +11,11 @@ description: >
   RunComfy CLI. Triggers on "gpt image 2", "gpt-image-2", "ChatGPT
   Images 2", "image 2", or any explicit ask to generate or edit with
   this model.
-emoji: "🎨"
 homepage: https://www.runcomfy.com
 license: MIT
 ---
 
-# 🎨 GPT Image 2 — Pro Pack on RunComfy
+# GPT Image 2 — Pro Pack on RunComfy
 
 [runcomfy.com](https://www.runcomfy.com/?utm_source=skills.sh&utm_medium=skill&utm_campaign=gpt-image-2) · [Text-to-image](https://www.runcomfy.com/models/openai/gpt-image-2/text-to-image?utm_source=skills.sh&utm_medium=skill&utm_campaign=gpt-image-2) · [Edit](https://www.runcomfy.com/models/openai/gpt-image-2/edit?utm_source=skills.sh&utm_medium=skill&utm_campaign=gpt-image-2) · [GitHub](https://github.com/agentspace-so/runcomfy-skills/tree/main/gpt-image-2)
 

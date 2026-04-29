@@ -1,6 +1,6 @@
 ---
 name: gpt-image-edit
-displayName: "🎨 GPT Image Edit — Pro Pack on RunComfy"
+displayName: "GPT Image Edit — Pro Pack on RunComfy"
 description: >
   Edit images with OpenAI GPT Image 2 (the `/edit` endpoint of ChatGPT
   Images 2.0) on RunComfy — bundled with the model's documented
@@ -13,12 +13,11 @@ description: >
   `runcomfy run openai/gpt-image-2/edit` through the local RunComfy CLI.
   Triggers on "gpt image edit", "gpt-image-edit", "chatgpt image edit",
   "edit with gpt image 2", or any explicit ask to edit with this model.
-emoji: "🎨"
 homepage: https://www.runcomfy.com
 license: MIT
 ---
 
-# 🎨 GPT Image Edit — Pro Pack on RunComfy
+# GPT Image Edit — Pro Pack on RunComfy
 
 [runcomfy.com](https://www.runcomfy.com/?utm_source=skills.sh&utm_medium=skill&utm_campaign=gpt-image-edit) · [Edit endpoint](https://www.runcomfy.com/models/openai/gpt-image-2/edit?utm_source=skills.sh&utm_medium=skill&utm_campaign=gpt-image-edit) · [Text-to-image sibling](https://www.runcomfy.com/models/openai/gpt-image-2/text-to-image?utm_source=skills.sh&utm_medium=skill&utm_campaign=gpt-image-edit) · [GitHub](https://github.com/agentspace-so/runcomfy-skills/tree/main/gpt-image-edit)
 

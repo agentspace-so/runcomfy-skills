@@ -1,6 +1,6 @@
 ---
 name: nano-banana-2
-displayName: "🍌 Nano Banana 2 — Pro Pack on RunComfy"
+displayName: "Nano Banana 2 — Pro Pack on RunComfy"
 description: >
   Generate images with Google Nano Banana 2 (Gemini-family flash-tier
   text-to-image) on RunComfy — bundled with the model's documented
@@ -14,12 +14,11 @@ description: >
   RunComfy CLI. Triggers on "nano banana", "nano-banana-2", "nano banana 2",
   "google image gen", "gemini image", or any explicit ask to generate
   with this model.
-emoji: "🍌"
 homepage: https://www.runcomfy.com
 license: MIT
 ---
 
-# 🍌 Nano Banana 2 — Pro Pack on RunComfy
+# Nano Banana 2 — Pro Pack on RunComfy
 
 [runcomfy.com](https://www.runcomfy.com/?utm_source=skills.sh&utm_medium=skill&utm_campaign=nano-banana-2) · [Model page](https://www.runcomfy.com/models/google/nano-banana-2?utm_source=skills.sh&utm_medium=skill&utm_campaign=nano-banana-2) · [GitHub](https://github.com/agentspace-so/runcomfy-skills/tree/main/nano-banana-2)
 

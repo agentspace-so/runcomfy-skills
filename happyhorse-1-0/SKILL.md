@@ -1,6 +1,6 @@
 ---
 name: happyhorse-1-0
-displayName: "🎬 HappyHorse 1.0 — Pro Pack on RunComfy"
+displayName: "HappyHorse 1.0 — Pro Pack on RunComfy"
 description: >
   Generate text-to-video with HappyHorse 1.0 on RunComfy. Documents HappyHorse
   1.0's strengths (#1 on Artificial Analysis Video Arena, native 1080p
@@ -11,12 +11,11 @@ description: >
   the local RunComfy CLI. Triggers on "happyhorse", "happy horse",
   "happyhorse 1.0", "happyhorse video", or any explicit ask to generate
   video with this model.
-emoji: "🎬"
 homepage: https://www.runcomfy.com
 license: MIT
 ---
 
-# 🎬 HappyHorse 1.0 — Pro Pack on RunComfy
+# HappyHorse 1.0 — Pro Pack on RunComfy
 
 [runcomfy.com](https://www.runcomfy.com/?utm_source=skills.sh&utm_medium=skill&utm_campaign=happyhorse-1-0) · [Text-to-video](https://www.runcomfy.com/models/happyhorse/happyhorse-1-0/text-to-video?utm_source=skills.sh&utm_medium=skill&utm_campaign=happyhorse-1-0) · [GitHub](https://github.com/agentspace-so/runcomfy-skills/tree/main/happyhorse-1-0)
 

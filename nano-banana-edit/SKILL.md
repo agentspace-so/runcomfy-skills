@@ -1,6 +1,6 @@
 ---
 name: nano-banana-edit
-displayName: "🍌 Nano Banana Edit — Pro Pack on RunComfy"
+displayName: "Nano Banana Edit — Pro Pack on RunComfy"
 description: >
   Edit images with Google Nano Banana 2 (image-to-image edit endpoint)
   on RunComfy. Documents Nano Banana Edit's strengths (preserve subject
@@ -10,12 +10,11 @@ description: >
   Calls `runcomfy run google/nano-banana-2/edit` through the local
   RunComfy CLI. Triggers on "nano banana edit", "edit with nano banana",
   "image edit nano banana", or any explicit ask to edit with this model.
-emoji: "🍌"
 homepage: https://www.runcomfy.com
 license: MIT
 ---
 
-# 🍌 Nano Banana Edit — Pro Pack on RunComfy
+# Nano Banana Edit — Pro Pack on RunComfy
 
 [runcomfy.com](https://www.runcomfy.com/?utm_source=skills.sh&utm_medium=skill&utm_campaign=nano-banana-edit) · [Edit endpoint](https://www.runcomfy.com/models/google/nano-banana-2/edit?utm_source=skills.sh&utm_medium=skill&utm_campaign=nano-banana-edit) · [GitHub](https://github.com/agentspace-so/runcomfy-skills/tree/main/nano-banana-edit)
 

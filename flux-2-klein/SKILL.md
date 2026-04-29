@@ -1,6 +1,6 @@
 ---
 name: flux-2-klein
-displayName: "🎨 Flux 2 Klein — Pro Pack on RunComfy"
+displayName: "Flux 2 Klein — Pro Pack on RunComfy"
 description: >
   Generate images with Flux 2 Klein (Black Forest Labs' distilled fast
   variant of Flux 2) on RunComfy — bundled with the model's documented
@@ -14,12 +14,11 @@ description: >
   `/4b/`) through the local RunComfy CLI. Triggers on "flux 2 klein",
   "flux-2-klein", "flux klein", "BFL flux 2", or any explicit ask to
   generate with this model.
-emoji: "🎨"
 homepage: https://www.runcomfy.com
 license: MIT
 ---
 
-# 🎨 Flux 2 Klein — Pro Pack on RunComfy
+# Flux 2 Klein — Pro Pack on RunComfy
 
 [runcomfy.com](https://www.runcomfy.com/?utm_source=skills.sh&utm_medium=skill&utm_campaign=flux-2-klein) · [9B model](https://www.runcomfy.com/models/blackforestlabs/flux-2-klein/9b/text-to-image?utm_source=skills.sh&utm_medium=skill&utm_campaign=flux-2-klein) · [4B model](https://www.runcomfy.com/models/blackforestlabs/flux-2-klein/4b/text-to-image?utm_source=skills.sh&utm_medium=skill&utm_campaign=flux-2-klein) · [GitHub](https://github.com/agentspace-so/runcomfy-skills/tree/main/flux-2-klein)
 
