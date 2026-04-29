@@ -1,0 +1,217 @@
+---
+name: nano-banana-edit
+displayName: "🍌 Nano Banana Edit — Pro Pack on RunComfy"
+description: >
+  Edit images with Google Nano Banana 2 (image-to-image edit endpoint)
+  on RunComfy — bundled with the model's documented prompting patterns
+  so the agent gets sharper output than naive prompting against the
+  same model. Knows Nano Banana Edit's strengths (preserve subject
+  identity, swap background, localize edits with spatial language,
+  multi-image batch edits up to 20 inputs), the schema, and when to
+  route to GPT Image 2 edit / Flux Kontext / Nano Banana 2 t2i instead.
+  Calls `runcomfy run google/nano-banana-2/edit` through the local
+  RunComfy CLI. Triggers on "nano banana edit", "edit with nano banana",
+  "image edit nano banana", or any explicit ask to edit with this model.
+emoji: "🍌"
+homepage: https://www.runcomfy.com
+license: MIT
+---
+
+# 🍌 Nano Banana Edit — Pro Pack on RunComfy
+
+[runcomfy.com](https://www.runcomfy.com/?utm_source=skills.sh&utm_medium=skill&utm_campaign=nano-banana-edit) · [Edit endpoint](https://www.runcomfy.com/models/google/nano-banana-2/edit?utm_source=skills.sh&utm_medium=skill&utm_campaign=nano-banana-edit) · [GitHub](https://github.com/agentspace-so/runcomfy-skills/tree/main/nano-banana-edit)
+
+Google **Nano Banana 2 Edit** — the image-to-image edit endpoint of the Gemini-family flash-tier image model — hosted on the **RunComfy Model API**. Up to **20 input images per call** for batch edits and multi-reference variation.
+
+**This skill bundles the model's documented prompting patterns** — preservation-first language, spatial scope localization, batch consistency, sibling-routing — so the agent gets the model's strongest output on the first or second try, instead of burning credits on prompts the model wasn't going to nail.
+
+## Install
+
+```bash
+npx skills add agentspace-so/runcomfy-skills --skill nano-banana-edit -g
+```
+
+## Why this skill (vs calling the model raw)
+
+A bare `runcomfy run google/nano-banana-2/edit --input '{"prompt":"...","image_urls":["..."]}'` runs, but you'll spend several iterations relearning what the edit endpoint actually responds to. This skill packs that knowledge in:
+
+- **Preservation-first language** — start the prompt with what to **keep** (identity, pose, brand, framing), then state what to change. The model holds composition stable when told what NOT to touch.
+- **Spatial scope localization** — "background only", "remove the left object", "change shirt color only" beats "make it cyberpunk". Narrower scope = sharper edit.
+- **Batch consistency** — pass up to **20 source images** in `image_urls`. Lock `aspect_ratio` and `resolution` across the batch so outputs feel like a series, not a grab-bag.
+- **Iterative refinement** — if edits drift, **reduce scope and iterate** in multiple short prompts rather than piling up one long edit instruction.
+- **Web-grounding for current-event edits** — `enable_web_search: true` when the edit references something fresh.
+- **Sibling routing** — when Nano Banana Edit wins (preserve identity + scope-targeted edit, batch-consistent edits) vs when GPT Image 2 edit / Flux Kontext / t2i beat it (multilingual text editing, single-shot precise local edits, generating from scratch).
+
+The agent calling this skill gets the model's strongest output on the first or second iteration — same model, sharper result.
+
+## When to pick this model (vs siblings)
+
+| You want | Use |
+|---|---|
+| Preserve subject identity, swap background or clothing | **Nano Banana Edit** ✓ |
+| Edit up to 20 images consistently in one batch | **Nano Banana Edit** ✓ |
+| Localize edit to "X only" with spatial language | **Nano Banana Edit** ✓ |
+| Edit multilingual text inside the image (signs, labels) | GPT Image 2 edit |
+| Single ref + precise local edit ("she's now holding X") | Flux Kontext |
+| Generate a new image from scratch | Nano Banana 2 t2i (sibling skill) |
+
+If the user said "nano banana edit" / "edit with nano banana" explicitly, route here regardless.
+
+## Prerequisites
+
+1. **RunComfy CLI** — `npm i -g @runcomfy/cli` or `curl -fsSL https://runcomfy.com/install.sh | sh`
+2. **RunComfy account** — `runcomfy login` opens a browser device-code flow.
+3. **CI / containers** — set `RUNCOMFY_TOKEN=<token>` instead of `runcomfy login`.
+
+## Endpoints + input schema
+
+### `google/nano-banana-2/edit`
+
+| Field | Type | Required | Default | Notes |
+|---|---|---|---|---|
+| `prompt` | string | yes | — | Edit instruction. Lead with preservation, end with the change. |
+| `image_urls` | array | yes | — | **1–20** publicly-fetchable HTTPS URLs. |
+| `number_of_images` | int | no | 1 | 1–4 outputs per call. |
+| `seed` | int | no | — | Reproducibility. |
+| `aspect_ratio` | enum | no | `auto` | `auto` (follows input) or fixed ratios — lock for batch consistency. |
+| `resolution` | enum | no | `1K` | `0.5K` / `1K` / `2K` / `4K`. |
+| `output_format` | enum | no | `png` | `png` / `jpeg` / `webp`. |
+| `safety_tolerance` | int | no | 4 | 1 (strict) – 6 (permissive). |
+| `limit_generations` | bool | no | — | If true, restricts each round to one output. |
+| `enable_web_search` | bool | no | false | Web grounding (extra cost / latency). |
+
+## How to invoke
+
+**Single-image background swap, identity preserved:**
+
+```bash
+runcomfy run google/nano-banana-2/edit \
+  --input '{
+    "prompt": "Keep the subject identity, pose, and clothing unchanged. Convert the background into a rainy neon cyberpunk street.",
+    "image_urls": ["https://.../portrait.jpg"]
+  }' \
+  --output-dir <absolute/path>
+```
+
+**Batch edit with locked framing:**
+
+```bash
+runcomfy run google/nano-banana-2/edit \
+  --input '{
+    "prompt": "Replace the watermark in the bottom-right with the text \"AURA\" in clean white sans-serif. Keep everything else exactly as in the input.",
+    "image_urls": ["https://.../sku-1.jpg", "https://.../sku-2.jpg", "https://.../sku-3.jpg"],
+    "aspect_ratio": "1:1",
+    "resolution": "1K"
+  }' \
+  --output-dir <absolute/path>
+```
+
+**Targeted spatial edit ("left object only"):**
+
+```bash
+runcomfy run google/nano-banana-2/edit \
+  --input '{
+    "prompt": "Remove the leftmost object only. Keep the right two objects, the table, and the lighting unchanged.",
+    "image_urls": ["https://.../still-life.jpg"]
+  }' \
+  --output-dir <absolute/path>
+```
+
+## Prompting — what actually works
+
+**Preservation first, change last.** Always lead with `"Keep [identity / pose / clothing / brand / framing] unchanged."` Then state the change in one clean sentence. Models honor what's stated up front; tail-end preservations get ignored.
+
+**Localize with spatial language.** "background only", "the left object", "the upper-right corner", "above the headline" — concrete spatial scopes are honored. "make it more X" is vague and drifts.
+
+**Batch consistency** — when editing a series, lock `aspect_ratio` and `resolution`. Use the same prompt grammar across the batch so each output reads as a sibling, not a remix.
+
+**Iterate small.** If a one-pass edit drifts, split into two: pass 1 changes background only, pass 2 swaps the subject's outfit. Cleaner edits, same total cost (assuming similar resolution).
+
+**Multi-image variation** — pass up to 20 inputs to get a coherent batch. Useful for SKU galleries, A/B testing, character sheet variations.
+
+**Anti-patterns:**
+- Long compound instructions ("change A and B and C and D") — drift increases per added scope.
+- Edit instructions written in passive voice ("the background should be changed") — be imperative.
+- Missing preservation goals — model will subtly rewrite the face / brand.
+- Aspect ratios that don't match input — causes crops or stretches.
+
+## Where it shines
+
+| Use case | Why Nano Banana Edit |
+|---|---|
+| **SKU gallery — same product on different backgrounds** | Batch of 20, identity-preserved, framing locked |
+| **Influencer / spokesperson background swaps** | Strong identity preservation across edits |
+| **Localized object removal / addition** | Spatial language honored |
+| **A/B variants for ad creative** | Seed lock + multiple `number_of_images` |
+| **Brand-asset relocalization** | Same composition with text / palette swap |
+
+## Sample prompts (verified to produce strong results)
+
+**Background swap (page example):**
+
+```
+Keep the subject identity unchanged. Convert the background into a rainy
+neon cyberpunk street.
+```
+
+**Targeted text replacement:**
+
+```
+Keep the bottle, label, and lighting exactly as in the input.
+Replace only the brand text on the label from "ALPHA" to "AURA",
+same font weight, centered, white on black.
+```
+
+**Multi-image batch consistency:**
+
+```
+For each input image: keep the subject's pose and identity unchanged.
+Convert the background to a soft warm-grey studio sweep with subtle
+floor shadow. Center the subject at the same fraction of frame as the
+input.
+```
+
+## Default behavior for the calling agent
+
+- **Lead with preservation goals in the prompt.** If the user said "swap the background", rewrite as "Keep [the subject + everything in the foreground] unchanged. Swap the background to X." Pass the rewritten prompt — but only if rewriting for clarity, not adding intent.
+- **Use `aspect_ratio: auto`** to preserve input ratio unless the user explicitly wants reframing.
+- **Pick `resolution` by intent.** Drafts → `0.5K`. Default → `1K`. Final → `2K`. Print / hero → `4K`.
+- **Use `number_of_images > 1`** when the user asks for "options" or "variants".
+- **Always pass `--output-dir`.** Deliver the file(s).
+
+## Hard constraints
+
+- Don't switch models without permission. If user said "Nano Banana Edit", don't substitute GPT Image 2 edit, Flux Kontext, or any other.
+- Don't rewrite the prompt's INTENT — you may rewrite for clarity (preservation-first ordering), never for content change.
+- Don't ask for unsupported aspect ratios / resolutions.
+
+## Limitations
+
+- **1–20 input images per call** — the first is treated as primary; the rest provide auxiliary cues.
+- **1–4 outputs per call.**
+- **Long compound prompts drift** — split into multiple passes.
+- **Web search adds latency + cost** — only enable on demand.
+- **For multilingual in-image text edits, GPT Image 2 edit wins.**
+
+## Exit codes
+
+| code | meaning |
+|---|---|
+| 0  | success |
+| 64 | bad CLI args |
+| 65 | bad input JSON / schema mismatch |
+| 69 | upstream 5xx |
+| 75 | retryable: timeout / 429 |
+| 77 | not signed in or token rejected |
+
+Full reference: [docs.runcomfy.com/cli/troubleshooting](https://docs.runcomfy.com/cli/troubleshooting?utm_source=skills.sh&utm_medium=skill&utm_campaign=nano-banana-edit).
+
+## How it works
+
+The skill invokes `runcomfy run google/nano-banana-2/edit` with a JSON body matching the schema. The CLI POSTs to `https://model-api.runcomfy.net/v1/models/google/nano-banana-2/edit`, polls the request, fetches the result, and downloads any `.runcomfy.net`/`.runcomfy.com` URL into `--output-dir`. `Ctrl-C` cancels the remote request before exit.
+
+## Security & Privacy
+
+- This skill only invokes the `runcomfy` CLI. No other endpoints, no telemetry, no callbacks.
+- The token saved by `runcomfy login` lives at `~/.config/runcomfy/token.json` (mode 0600).
+- Auto-download is restricted to `*.runcomfy.net` / `*.runcomfy.com` — a compromised model cannot trick the CLI into pulling arbitrary internet content.

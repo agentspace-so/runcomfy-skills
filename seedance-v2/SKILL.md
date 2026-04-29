@@ -1,0 +1,215 @@
+---
+name: seedance-v2
+displayName: "🎬 Seedance 2.0 Pro — Pro Pack on RunComfy"
+description: >
+  Generate cinematic short-form video with ByteDance Seedance 2.0 Pro
+  on RunComfy — bundled with the model's documented prompting patterns
+  so the agent gets sharper output than naive prompting against the
+  same model. Knows Seedance 2.0 Pro's strengths (multi-modal references
+  — up to 9 images, 3 videos, 3 audio — synchronized in-pass audio with
+  natural lip-sync, cinematic motion refinement), the 4–15s duration
+  schema, and when to route to HappyHorse 1.0 / Wan 2.7 / Kling instead.
+  Calls `runcomfy run bytedance/seedance-v2/pro` through the local
+  RunComfy CLI. Triggers on "seedance", "seedance 2", "seedance v2",
+  "seedance pro", "bytedance video", or any explicit ask to generate
+  video with this model.
+emoji: "🎬"
+homepage: https://www.runcomfy.com
+license: MIT
+---
+
+# 🎬 Seedance 2.0 Pro — Pro Pack on RunComfy
+
+[runcomfy.com](https://www.runcomfy.com/?utm_source=skills.sh&utm_medium=skill&utm_campaign=seedance-v2) · [Seedance 2.0 Pro](https://www.runcomfy.com/models/bytedance/seedance-v2/pro?utm_source=skills.sh&utm_medium=skill&utm_campaign=seedance-v2) · [GitHub](https://github.com/agentspace-so/runcomfy-skills/tree/main/seedance-v2)
+
+ByteDance **Seedance 2.0 Pro** — multimodal cinematic video generator with native lip-synced audio — hosted on the **RunComfy Model API**.
+
+**This skill bundles the model's documented prompting patterns** — image/video/audio reference division of labor, camera-language cues, lip-sync prompting, sibling-routing — so the agent gets the model's strongest output on the first or second try, instead of burning credits on prompts the model wasn't going to nail.
+
+## Install
+
+```bash
+npx skills add agentspace-so/runcomfy-skills --skill seedance-v2 -g
+```
+
+## Why this skill (vs calling the model raw)
+
+A bare `runcomfy run bytedance/seedance-v2/pro --input '{"prompt":"..."}'` runs, but you'll spend several iterations relearning what Seedance responds to. This skill packs that knowledge in:
+
+- **Image vs text division of labor** — use **images** for what must stay stable (face, costume, logo); use **text** for what should evolve (action, mood, lighting). Don't try to describe a stable face in prose.
+- **Multi-modal reference budget** — up to **9 images, 3 videos (2–15s each), 3 audio (≤15MB each)**. Use them; don't waste budget cramming everything into the prompt.
+- **Camera language is real** — "medium close-up", "slow push-in", "handheld vs locked-off" parse as direction.
+- **Lip-sync prompting** — when `generate_audio: true`, name the dialogue tone you want ("warm, friendly", "sharp, instructional"). The model lip-syncs in-pass — it doesn't need a separate audio input unless you want a specific voice.
+- **Schema constraints** — duration 4–15s only, resolution 480p/720p, prompts CN ≤500 chars or EN ≤1000 words.
+- **Sibling routing** — when Seedance wins (lip-sync ads, multi-modal ref, branded narrative) vs when HappyHorse 1.0 / Wan 2.7 / Kling beat it (blind-vote quality leader, audio-driven lip-sync, motion editing).
+
+The agent calling this skill gets the model's strongest output on the first or second try — same model, sharper result.
+
+## When to pick this model (vs siblings)
+
+Seedance 2.0 Pro's distinct strength is **multi-modal cinematic short-form**: combine character images + scene videos + reference audio into one coherent shot. Pick it when **fidelity to a reference identity / scene matters and you want native lip-sync**.
+
+| You want | Use |
+|---|---|
+| Lip-synced spokesperson / dialogue ad | **Seedance 2.0 Pro** ✓ |
+| Multi-modal references (image + video + audio) | **Seedance 2.0 Pro** ✓ |
+| Brand-consistent multi-language narrative | **Seedance 2.0 Pro** ✓ |
+| Currently-#1 blind-vote video quality | HappyHorse 1.0 |
+| Audio-driven lip-sync from your own track | Wan 2.7 (`audio_url`) |
+| Motion editing on existing footage | Kling Video O1 |
+| Ultra-fast iteration | LTX 2 |
+
+If the user said "Seedance" / "Seedance 2" / "ByteDance video" explicitly, route here regardless.
+
+## Prerequisites
+
+1. **RunComfy CLI** — `npm i -g @runcomfy/cli` or `curl -fsSL https://runcomfy.com/install.sh | sh`
+2. **RunComfy account** — `runcomfy login` opens a browser device-code flow.
+3. **CI / containers** — set `RUNCOMFY_TOKEN=<token>` instead of `runcomfy login`.
+
+## Endpoints + input schema
+
+### `bytedance/seedance-v2/pro`
+
+| Field | Type | Required | Default | Notes |
+|---|---|---|---|---|
+| `prompt` | string | yes | — | CN ≤ 500 chars OR EN ≤ 1000 words. |
+| `image_url` | array | no | `[]` | 0–9 references (JPEG/PNG/WebP/BMP/TIFF/GIF). |
+| `video_url` | array | no | `[]` | 0–3 clips (MP4/MOV), 2–15s each. |
+| `audio_url` | array | no | `[]` | 0–3 audio refs (WAV/MP3), 2–15s, < 15MB each. |
+| `aspect_ratio` | enum | no | `adaptive` | `adaptive`, `16:9`, `9:16`, `4:3`, `3:4`, `1:1`, `21:9`. |
+| `duration` | int | no | 5 | 4–15 (whole seconds). |
+| `resolution` | enum | no | `720p` | `480p` or `720p`. |
+| `generate_audio` | bool | no | true | In-pass synchronized speech / SFX / music. |
+| `seed` | int | no | — | Reproducibility. |
+
+## How to invoke
+
+**Default (text only, 5s, 720p with audio):**
+
+```bash
+runcomfy run bytedance/seedance-v2/pro \
+  --input '{"prompt": "<user prompt>"}' \
+  --output-dir <absolute/path>
+```
+
+**Lip-synced ad with character reference (image-stable, text-evolves):**
+
+```bash
+runcomfy run bytedance/seedance-v2/pro \
+  --input '{
+    "prompt": "Medium close-up. The woman explains today'\''s special in a warm friendly tone, slow push-in, soft window light, gentle cafe ambience.",
+    "image_url": ["https://.../barista-headshot.jpg"],
+    "duration": 8,
+    "aspect_ratio": "9:16"
+  }' \
+  --output-dir <absolute/path>
+```
+
+**Multi-modal (image + video + audio refs):**
+
+```bash
+runcomfy run bytedance/seedance-v2/pro \
+  --input '{
+    "prompt": "Subject from image 1 walks through the café from video 1, voice tone matches audio 1.",
+    "image_url": ["https://.../subject.jpg"],
+    "video_url": ["https://.../cafe-locked-shot.mp4"],
+    "audio_url": ["https://.../voice-ref.mp3"]
+  }' \
+  --output-dir <absolute/path>
+```
+
+The CLI submits, polls, fetches the result, downloads `*.runcomfy.net`/`*.runcomfy.com` URLs into `--output-dir`.
+
+## Prompting — what actually works
+
+**Image vs text division.** This is the single most important rule. Stable identity (face, costume, brand mark, logo) → put in `image_url`. Evolving narrative (action, mood, lighting, camera) → put in `prompt`. Trying to verbally describe a face in detail wastes tokens and produces drift.
+
+**Camera + motion in plain language.** "Medium close-up", "slow push-in", "handheld follow", "locked-off wide" all work as directives. Combine: `"Medium close-up. Slow push-in over 3 seconds. Handheld, slight breathing motion."`
+
+**Audio direction with `generate_audio: true`** — say the tone: `"warm friendly conversational"`, `"calm instructional"`, `"crisp newsroom delivery"`. For ambient: `"gentle cafe chatter, distant traffic, no foreground music"`.
+
+**Reference media specs** — videos must be 2–15s; audio must be ≤15MB and 2–15s. Out-of-range files reject. Match aspect ratio of refs to your output to avoid crops.
+
+**Anti-patterns:**
+- Mixing radically different aesthetic refs (watercolor + photoreal) → confuses.
+- Conflicting style cues in prompt → simplify by removing contradictions.
+- Trying to describe stable identity verbally → use `image_url` instead.
+- Asking for >15s clips → 422; segment into multiple calls.
+
+## Where it shines
+
+| Use case | Why Seedance 2.0 Pro |
+|---|---|
+| **Spokesperson / dialogue ads** | Native in-pass lip-sync, no separate TTS step |
+| **Brand-consistent multi-language narratives** | Image refs hold identity; text drives translation |
+| **Cinematic short-form film previs** | Camera-shot grammar + multi-modal refs |
+| **Ad creatives with reference music / VO tone** | Audio refs guide voice / mood without locking lip-sync |
+| **Reproducible variant testing** | Seed control + fixed schema |
+
+## Sample prompts (verified to produce strong results)
+
+**Default playground example:**
+
+```
+Golden hour on a quiet cafe terrace: a barista wipes the counter, then
+looks up and explains today's special in a friendly tone, natural
+lip-sync. Medium close-up, slow push-in; warm side light, soft bokeh
+through glass, gentle cafe ambience and subtle film grain.
+```
+
+**Multi-modal lip-sync (text + image):**
+
+```
+Same person as image 1 in a softly-lit recording booth, leaning into
+the mic, says: "We just shipped the biggest update of the year."
+Calm conversational tone. Medium close-up, locked tripod, shallow DOF,
+warm key light from camera-left.
+```
+
+## Default behavior for the calling agent
+
+- **Pass the user's prompt through raw.** Don't translate, polish, or add modifiers unless asked.
+- **Pick variant by intent.** Only one variant on this template (`/pro`).
+- **Pick `aspect_ratio` by intent.** Default `adaptive`. "Vertical / shorts" → `9:16`. "Cinematic / banner" → `21:9`.
+- **Pick `resolution` by intent.** Default `720p`. "Cheap test" → `480p`.
+- **Pick `duration`.** Default 5s. Range 4–15s.
+- **Use refs when available.** If the user mentions a person / scene / voice they want preserved, ask for or accept reference URLs and put them in the right array (`image_url` / `video_url` / `audio_url`).
+- **Always pass `--output-dir`.** Deliver the file.
+
+## Hard constraints
+
+- Don't switch models without permission.
+- Don't rewrite the prompt unless asked.
+- Don't request unsupported aspect / duration / resolution.
+
+## Limitations
+
+- **Duration 4–15s** — no longer clips on this endpoint.
+- **Resolution ceiling 720p** on the playground variant.
+- **Reference media specs** — videos / audio must be 2–15s; audio < 15MB.
+- **Lip-sync quality** — depends on prompt clarity; not guaranteed perfect under all conditions.
+- **No `@`-syntax for character binding** — relies on image refs + prompt alignment.
+
+## Exit codes
+
+| code | meaning |
+|---|---|
+| 0  | success |
+| 64 | bad CLI args |
+| 65 | bad input JSON / schema mismatch |
+| 69 | upstream 5xx |
+| 75 | retryable: timeout / 429 |
+| 77 | not signed in or token rejected |
+
+Full reference: [docs.runcomfy.com/cli/troubleshooting](https://docs.runcomfy.com/cli/troubleshooting?utm_source=skills.sh&utm_medium=skill&utm_campaign=seedance-v2).
+
+## How it works
+
+The skill invokes `runcomfy run bytedance/seedance-v2/pro` with a JSON body matching the schema. The CLI POSTs to `https://model-api.runcomfy.net/v1/models/bytedance/seedance-v2/pro`, polls the request, fetches the result, and downloads any `.runcomfy.net`/`.runcomfy.com` URL into `--output-dir`. `Ctrl-C` cancels the remote request before exit.
+
+## Security & Privacy
+
+- This skill only invokes the `runcomfy` CLI. No other endpoints, no telemetry, no callbacks.
+- The token saved by `runcomfy login` lives at `~/.config/runcomfy/token.json` (mode 0600).
+- Auto-download is restricted to `*.runcomfy.net` / `*.runcomfy.com` — a compromised model cannot trick the CLI into pulling arbitrary internet content.
