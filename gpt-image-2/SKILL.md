@@ -198,14 +198,15 @@ Full reference: [docs.runcomfy.com/cli/troubleshooting](https://docs.runcomfy.co
 4. On terminal status, the CLI fetches `GET .../requests/<id>/result` and downloads any URL whose host ends with `.runcomfy.net` or `.runcomfy.com` into `--output-dir`. Other URLs are listed but not fetched.
 5. `Ctrl-C` while polling sends `POST .../requests/<id>/cancel` so you don't get billed for GPU you stopped.
 
-## Security & Privacy
-
-- This skill only invokes the `runcomfy` CLI. No other endpoints, no telemetry, no callbacks.
-- The token saved by `runcomfy login` lives at `~/.config/runcomfy/token.json` (mode 0600), read only by `runcomfy`.
-- Auto-download is restricted to `*.runcomfy.net` / `*.runcomfy.com` — a compromised model cannot trick the CLI into pulling arbitrary internet content.
-- Downloads stream to disk and abort if any single response exceeds 2 GiB.
-- No env vars are read other than `RUNCOMFY_TOKEN` (optional, for CI).
 
 ## What this skill is not
 
 Not a direct OpenAI API client. Not a capability grant — depends on a working RunComfy account. Not multi-tenant.
+
+## Security & Privacy
+
+- **Token storage**: `runcomfy login` writes the API token to `~/.config/runcomfy/token.json` with mode 0600 (owner-only read/write). Set `RUNCOMFY_TOKEN` env var to bypass the file entirely in CI / containers.
+- **Input boundary**: the user prompt is passed as a JSON string to the CLI via `--input`. The CLI does NOT shell-expand the prompt; it transmits the JSON body directly to the Model API over HTTPS. No shell injection surface from prompt content.
+- **Third-party content**: image / mask / video URLs you pass are fetched by the RunComfy model server, not by the CLI on your machine. Treat external URLs as untrusted; image-based prompt injection is a known risk for any image-edit / video-edit model.
+- **Outbound endpoints**: only `model-api.runcomfy.net` (request submission) and `*.runcomfy.net` / `*.runcomfy.com` (download whitelist for generated outputs). No telemetry, no callbacks.
+- **Generated-file size cap**: the CLI aborts any single download > 2 GiB to prevent disk-fill from a malicious or runaway model output.
