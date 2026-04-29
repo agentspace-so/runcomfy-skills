@@ -33,8 +33,8 @@ npx skills add agentspace-so/runcomfy-skills --skill flux-kontext -g
 
 | You want | Use |
 |---|---|
-| Single-image precise local edit ("she's now holding X") | **Flux Kontext** ✓ |
-| High-fidelity preservation of source identity | **Flux Kontext** ✓ |
+| Single-image precise local edit ("she's now holding X") | **Flux Kontext** |
+| High-fidelity preservation of source identity | **Flux Kontext** |
 | Batch edits across 1–20 images | Nano Banana Edit |
 | Edit multilingual / embedded text in image | GPT Image 2 edit |
 | Generate from scratch, no source image | Flux 2 Klein |
