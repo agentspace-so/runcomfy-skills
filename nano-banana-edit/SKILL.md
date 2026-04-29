@@ -3,9 +3,7 @@ name: nano-banana-edit
 displayName: "🍌 Nano Banana Edit — Pro Pack on RunComfy"
 description: >
   Edit images with Google Nano Banana 2 (image-to-image edit endpoint)
-  on RunComfy — bundled with the model's documented prompting patterns
-  so the agent gets sharper output than naive prompting against the
-  same model. Knows Nano Banana Edit's strengths (preserve subject
+  on RunComfy. Documents Nano Banana Edit's strengths (preserve subject
   identity, swap background, localize edits with spatial language,
   multi-image batch edits up to 20 inputs), the schema, and when to
   route to GPT Image 2 edit / Flux Kontext / Nano Banana 2 t2i instead.
@@ -153,20 +151,6 @@ Convert the background to a soft warm-grey studio sweep with subtle
 floor shadow. Center the subject at the same fraction of frame as the
 input.
 ```
-
-## Default behavior for the calling agent
-
-- **Lead with preservation goals in the prompt.** If the user said "swap the background", rewrite as "Keep [the subject + everything in the foreground] unchanged. Swap the background to X." Pass the rewritten prompt — but only if rewriting for clarity, not adding intent.
-- **Use `aspect_ratio: auto`** to preserve input ratio unless the user explicitly wants reframing.
-- **Pick `resolution` by intent.** Drafts → `0.5K`. Default → `1K`. Final → `2K`. Print / hero → `4K`.
-- **Use `number_of_images > 1`** when the user asks for "options" or "variants".
-- **Always pass `--output-dir`.** Deliver the file(s).
-
-## Hard constraints
-
-- Don't switch models without permission. If user said "Nano Banana Edit", don't substitute GPT Image 2 edit, Flux Kontext, or any other.
-- Don't rewrite the prompt's INTENT — you may rewrite for clarity (preservation-first ordering), never for content change.
-- Don't ask for unsupported aspect ratios / resolutions.
 
 ## Limitations
 

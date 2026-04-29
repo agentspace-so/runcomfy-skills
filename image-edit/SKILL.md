@@ -9,7 +9,7 @@ description: >
   multi-ref composition, layout precision), Flux Kontext Pro
   (single-ref high-fidelity local edit), or Z-Image Turbo Inpaint
   (mask-driven precise region edit). Bundles each model's documented
-  prompting patterns so the agent gets sharper edits without burning
+  prompting patterns so the skill gets sharper edits without burning
   iterations on the wrong model. Calls `runcomfy run <vendor>/<model>/edit`
   through the local RunComfy CLI. Triggers on "image edit", "edit image",
   "image-to-image", "i2i", "swap background", "remove object",
@@ -238,21 +238,6 @@ runcomfy run tongyi-mai/z-image/turbo/inpainting \
 - **Spatial labels still help** even though the mask defines the region: `"the left shelf"`, `"upper-right quadrant"`.
 
 ---
-
-## Default behavior for the calling agent
-
-1. **Classify intent.** Match user's words to a row in the "Pick the right model" table.
-2. **Default to Nano Banana Edit** if intent is unclear or just says "edit this image".
-3. **Lead the prompt with preservation** when the user cares about identity / brand / framing — rewrite vague requests for clarity.
-4. **For Z-Image Inpaint, require a mask URL.** If the user wants region-bound editing without a mask, route to Nano Banana Edit (spatial-language scope) instead.
-5. **Pick `resolution` / `size` by intent.** Drafts → low; final → high.
-6. **Always pass `--output-dir`.** Deliver the file(s).
-
-## Hard constraints
-
-- Don't switch routes without permission. If user said "use Flux Kontext" / "use GPT Image 2 edit" / "with a mask", honor the route.
-- Don't pass an array `images` value to Flux Kontext (single ref only) or to Z-Image Inpaint.
-- Don't request unsupported `size` / `resolution` values per route.
 
 ## Limitations
 

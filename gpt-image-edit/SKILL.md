@@ -4,8 +4,8 @@ displayName: "🎨 GPT Image Edit — Pro Pack on RunComfy"
 description: >
   Edit images with OpenAI GPT Image 2 (the `/edit` endpoint of ChatGPT
   Images 2.0) on RunComfy — bundled with the model's documented
-  prompting patterns so the agent gets sharper output than naive
-  prompting against the same model. Knows GPT Image Edit's strengths
+  prompting patterns so the skill gets sharper output than naive
+  prompting against the same model. Documents GPT Image Edit's strengths
   (preservation language, multilingual in-image text editing,
   multi-reference up to 10 images, layout / typography precision),
   the schema, and when to route to Nano Banana Edit / Flux Kontext /
@@ -149,20 +149,6 @@ Compose subject from image 1 into the kitchen from image 2.
 Match the warm window light and color palette of image 2.
 Keep subject identity (face, pose, clothing) from image 1 unchanged.
 ```
-
-## Default behavior for the calling agent
-
-- **Lead with preservation.** Rewrite user requests to start with what stays unchanged.
-- **Use `size: "auto"`** unless the user explicitly wants reframing.
-- **For multilingual text edits, quote the literal characters** and name the script.
-- **For multi-ref, number the images** in the prompt.
-- **Always pass `--output-dir`.** Deliver the file.
-
-## Hard constraints
-
-- Don't switch models without permission. If user said "GPT Image Edit", don't substitute Nano Banana Edit, Flux Kontext, or any other.
-- Don't rewrite the prompt's INTENT — only reorder for preservation-first.
-- Don't request unsupported `size` values.
 
 ## Limitations
 

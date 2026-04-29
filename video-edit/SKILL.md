@@ -9,7 +9,7 @@ description: >
   Motion Control (transfer precise motion from a reference video to a
   target character), or Lucy Edit Restyle (lightweight identity-stable
   restyle / outfit swap). Bundles each model's documented prompting
-  patterns so the agent gets sharper edits without burning iterations
+  patterns so the skill gets sharper edits without burning iterations
   on the wrong model. Calls `runcomfy run <vendor>/<model>/<endpoint>`
   through the local RunComfy CLI. Triggers on "video edit", "edit
   video", "restyle video", "swap video background", "motion control",
@@ -193,21 +193,6 @@ runcomfy run decart/lucy-edit/restyle \
 - **No aspect ratio control** — output matches input. Cropping happens server-side if you don't pre-match.
 
 ---
-
-## Default behavior for the calling agent
-
-1. **Classify intent.** Match user's words to a row in the "Pick the right model" table.
-2. **Default to Wan 2.7 Edit-Video** if intent is unclear or just says "edit this video".
-3. **For motion transfer specifically** ("make this character dance like in this video"), route to Route 2 (Kling).
-4. **For lightweight outfit / lighting restyle**, route to Route 3 (Lucy) — faster + simpler.
-5. **Lead the prompt with preservation goals** when identity matters.
-6. **Always pass `--output-dir`.** Deliver the file.
-
-## Hard constraints
-
-- Don't switch routes without permission. If user said "use Wan 2.7" / "motion control" / "Lucy restyle", honor the route.
-- Don't pass `reference_image` to general restyle in Wan 2.7 — over-conditions output.
-- Don't request resolutions beyond each model's ceiling (Lucy 720p; Wan 1080p; Kling 1080p).
 
 ## Limitations
 

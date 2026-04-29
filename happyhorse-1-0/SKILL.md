@@ -2,9 +2,7 @@
 name: happyhorse-1-0
 displayName: "🎬 HappyHorse 1.0 — Pro Pack on RunComfy"
 description: >
-  Generate text-to-video with HappyHorse 1.0 on RunComfy — bundled with
-  the model's documented prompting patterns so the agent gets sharper
-  output than naive prompting against the same model. Knows HappyHorse
+  Generate text-to-video with HappyHorse 1.0 on RunComfy. Documents HappyHorse
   1.0's strengths (#1 on Artificial Analysis Video Arena, native 1080p
   with in-pass synchronized audio, multi-shot character consistency,
   6-language prompt support), the duration / aspect-ratio / resolution
@@ -153,21 +151,6 @@ espresso shot, steam rising into the morning sun, rich crema slowly
 forming. Close-up handheld, shallow DOF, warm cafe ambience and the
 hiss of the steam wand.
 ```
-
-## Default behavior for the calling agent
-
-- **Pass the user's prompt through raw.** Don't translate, polish, or add modifiers unless asked.
-- **Pick `aspect_ratio` by intent.** Default → `16:9`. "Vertical / shorts / Reels / TikTok" → `9:16`. "Square / Instagram feed" → `1:1`. Don't pass anything outside the 5 supported.
-- **Pick `resolution` by intent.** Default → `1080P`. "Cheap test / quick check" → `720P`.
-- **Pick `duration` by intent.** Default → 5s. Range 3–15s. Don't ask for >15s.
-- **Always pass `--output-dir`.** Default `./` if user didn't say.
-- **Deliver the video.** After the CLI succeeds, attach / display the file. Don't stop at "done, see X.mp4".
-
-## Hard constraints
-
-- Don't switch models without permission. If user said "HappyHorse", don't substitute Wan, Seedance, LTX, or any other video model.
-- Don't rewrite the prompt unless asked.
-- Don't ask for resolutions / aspect ratios / durations outside the schema.
 
 ## Limitations
 

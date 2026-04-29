@@ -4,8 +4,8 @@ displayName: "🎨 Flux 2 Klein — Pro Pack on RunComfy"
 description: >
   Generate images with Flux 2 Klein (Black Forest Labs' distilled fast
   variant of Flux 2) on RunComfy — bundled with the model's documented
-  prompting patterns so the agent gets sharper output than naive
-  prompting against the same model. Knows Flux 2 Klein's strengths
+  prompting patterns so the skill gets sharper output than naive
+  prompting against the same model. Documents Flux 2 Klein's strengths
   (sub-second latency, multi-reference brand styling, declarative
   subject-first prompts), the step-count strategy (4–8 for fast
   iteration, ~25 for polish), the 9B vs 4B variant trade-off, and when
@@ -178,27 +178,6 @@ Same composition and lighting as the reference image, but the bottle
 label is now blue with white sans-serif typography reading "AURA";
 keep the bottle silhouette, table, and shadow exactly as in the reference
 ```
-
-## Default behavior for the calling agent
-
-- **Pass the user's prompt through raw.** Don't translate, polish, or add modifiers unless asked.
-- **Pick variant by intent.**
-  - Unspecified or "fast / iterate / mockup" → **4B** at default steps.
-  - "Polish / final / hi-fi" → **9B** at `steps: 25`.
-  - User said "Flux 2 Klein" without variant → default to **9B** (better all-round).
-- **Pick `width`/`height` by intent.**
-  - Unspecified → 1024×1024.
-  - "Portrait / vertical" → 1024×1536 (capped 16:9 means height ≤ 1536 if width=1024 — adjust).
-  - "Landscape / banner" → 1536×864 (16:9 max).
-  - **Never request more than ~2K total resolution.**
-- **Always pass `--output-dir`.** Default `./` if user didn't say.
-- **Deliver the image.** After the CLI succeeds, attach / display the file. Don't stop at "done, see X.png".
-
-## Hard constraints
-
-- Don't switch models without permission. If user said "Flux 2 Klein", don't substitute Flux 2 Pro, GPT Image 2, Nano Banana, or any other model.
-- Don't rewrite the prompt unless asked.
-- Don't ask the model for >2K resolution or >16:9 aspect — those will downsize/crop.
 
 ## Limitations
 

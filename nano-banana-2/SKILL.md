@@ -4,8 +4,8 @@ displayName: "🍌 Nano Banana 2 — Pro Pack on RunComfy"
 description: >
   Generate images with Google Nano Banana 2 (Gemini-family flash-tier
   text-to-image) on RunComfy — bundled with the model's documented
-  prompting patterns so the agent gets sharper output than naive
-  prompting against the same model. Knows Nano Banana 2's strengths
+  prompting patterns so the skill gets sharper output than naive
+  prompting against the same model. Documents Nano Banana 2's strengths
   (rapid iteration, in-image typography rendering, predictable framing,
   optional web-grounded context), the resolution-tier pricing, the
   safety-tolerance dial, and when to route to Nano Banana Pro / GPT
@@ -172,21 +172,6 @@ linen runner, soft morning side-light, the words "Slow Down" in
 hand-drawn serif large at the top, gentle steam rising, neutral color
 palette, uncluttered
 ```
-
-## Default behavior for the calling agent
-
-- **Pass the user's prompt through raw.** Don't translate, polish, or add modifiers unless asked.
-- **Pick `resolution` by intent.** Drafts / batches / quick checks → `0.5K`. Default → `1K`. "Final / hi-fi" → `2K`. Print / hero only → `4K` (costs 2×).
-- **Pick `aspect_ratio` by intent.** Default → `auto`. "Portrait / vertical / shorts" → `9:16` or `4:5`. "Landscape / banner" → `16:9` or `21:9`. "Square / IG feed" → `1:1`. **Never pass an unsupported ratio.**
-- **Pick `num_images` by intent.** Default → 1. "Show me options / variants / ideas" → 4.
-- **Use `seed`** when the user says "same image but X". Reuse the prior seed.
-- **Always pass `--output-dir`.** Deliver the file(s).
-
-## Hard constraints
-
-- Don't switch models without permission. If user said "Nano Banana 2", don't substitute Nano Banana Pro or any other.
-- Don't rewrite the prompt unless asked.
-- Don't request unsupported resolutions / aspect ratios.
 
 ## Limitations
 

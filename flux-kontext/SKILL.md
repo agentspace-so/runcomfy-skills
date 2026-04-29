@@ -4,8 +4,8 @@ displayName: "🎨 Flux Kontext Pro — Pro Pack on RunComfy"
 description: >
   Edit images with Flux 1 Kontext Pro (Black Forest Labs' precise local
   image-edit model) on RunComfy — bundled with the model's documented
-  prompting patterns so the agent gets sharper output than naive
-  prompting against the same model. Knows Flux Kontext's strengths
+  prompting patterns so the skill gets sharper output than naive
+  prompting against the same model. Documents Flux Kontext's strengths
   (single-reference precise local edits, strong prompt control,
   consistent high-fidelity outputs), the schema (single image + prompt),
   and when to route to Nano Banana Edit / GPT Image 2 edit / Flux 2
@@ -134,19 +134,6 @@ Same font weight, white on black, centered.
 Keep the person's face, pose, and clothing unchanged. Add a leather
 shoulder bag, dark brown, hanging on the right shoulder.
 ```
-
-## Default behavior for the calling agent
-
-- **Single image only.** If the user provides multiple sources, ask which is primary or route to Nano Banana Edit.
-- **Lead with preservation.** Rewrite the user's edit request to start with `"Keep [unchanged elements]"` followed by the change.
-- **Pick `aspect_ratio` carefully.** If unspecified, omit (preserves input). If specified, use a supported value.
-- **Always pass `--output-dir`.** Deliver the file.
-
-## Hard constraints
-
-- Don't switch models without permission. If user said "Flux Kontext", don't substitute Nano Banana Edit, GPT Image 2 edit, or Flux 2 Klein.
-- Don't rewrite the prompt's INTENT — you may rewrite for preservation-first ordering only.
-- Don't pass multiple `image` values — single ref only.
 
 ## Limitations
 

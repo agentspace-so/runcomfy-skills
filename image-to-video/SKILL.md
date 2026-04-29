@@ -9,7 +9,7 @@ description: >
   `audio_url` for custom-voiceover lip-sync, or Seedance 2.0 Pro for
   multi-modal animation from image + reference video + reference
   audio. Bundles each model's documented prompting patterns so the
-  agent gets sharper output without burning iterations on the wrong
+  caller gets sharper output without burning iterations on the wrong
   model. Calls `runcomfy run <vendor>/<model>/image-to-video` (or
   endpoint variant) through the local RunComfy CLI. Triggers on
   "image to video", "image-to-video", "i2v", "animate image", "make
@@ -173,21 +173,6 @@ runcomfy run bytedance/seedance-v2/pro \
 - **Don't mix radically different aesthetics** — if image 1 is a watercolor and video 1 is photoreal, output drifts.
 
 ---
-
-## Default behavior for the calling agent
-
-1. **Classify intent.** Read the "Pick the right model" table. Match user's words to the row.
-2. **Default to HappyHorse 1.0 I2V** if the intent isn't clear or just says "animate this image".
-3. **Pass the user's prompt through raw** unless rewriting for the model's expected pattern (e.g. HappyHorse rewards motion-verb-leading; rewrite if needed).
-4. **Always include preservation language** when the user cares about identity ("keep the face / brand / pose unchanged").
-5. **Pick `duration` / `resolution` by intent.** Default `5s` / `1080P` (HappyHorse), `5s` / `1080p` (Wan), `5s` / `720p` (Seedance).
-6. **Always pass `--output-dir`.** Deliver the file.
-
-## Hard constraints
-
-- Don't switch routes without permission. If user said "use Wan 2.7" / "with my voiceover", use Route 2; if user said "HappyHorse" or just "animate", use Route 1.
-- Don't pass an audio track to HappyHorse — its audio is in-pass only. Use Wan 2.7 (Route 2) instead.
-- Don't request resolutions / durations / aspect ratios outside each model's schema.
 
 ## Limitations
 

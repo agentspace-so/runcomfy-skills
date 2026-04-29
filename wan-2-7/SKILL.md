@@ -3,9 +3,7 @@ name: wan-2-7
 displayName: "🎬 Wan 2.7 — Pro Pack on RunComfy"
 description: >
   Generate text-to-video with Wan 2.7 (Wan-AI's flagship motion model)
-  on RunComfy — bundled with the model's documented prompting patterns
-  so the agent gets sharper output than naive prompting against the
-  same model. Knows Wan 2.7's strengths (multi-reference conditioning,
+  on RunComfy. Documents Wan 2.7's strengths (multi-reference conditioning,
   audio-driven lip-sync via `audio_url`, smoother transitions, prompt
   expansion), the duration / resolution / aspect-ratio schema, and
   when to route to HappyHorse 1.0 / Seedance 2.0 / Kling / LTX 2
@@ -152,21 +150,6 @@ of field, warm key light from camera-left.
 rising into morning sun, rich crema slowly forming. Close-up handheld,
 shallow DOF, warm cafe ambience.
 ```
-
-## Default behavior for the calling agent
-
-- **Pass the user's prompt through raw** unless they explicitly want literal control (then disable expansion).
-- **Pick `aspect_ratio` by intent.** Default `16:9`. "Vertical / shorts" → `9:16`. "Square / IG" → `1:1`. Don't pass anything outside the 5 supported.
-- **Pick `resolution` by intent.** Default `1080p`. "Quick test" → `720p`.
-- **Pick `duration`.** Default 5s. Range 2–15s.
-- **Use `audio_url` when the user wants lip-sync to a specific track.** Otherwise omit (model auto-generates background music).
-- **Always pass `--output-dir`.** Deliver the file.
-
-## Hard constraints
-
-- Don't switch models without permission. If user said "Wan", don't substitute HappyHorse, Seedance, Kling, LTX, or any other.
-- Don't rewrite the prompt unless asked.
-- Don't request resolutions / aspect ratios / durations outside the schema.
 
 ## Limitations
 

@@ -3,9 +3,7 @@ name: gpt-image-2
 displayName: "🎨 GPT Image 2 — Pro Pack on RunComfy"
 description: >
   Generate and edit images with OpenAI GPT Image 2 (ChatGPT Images 2.0)
-  on RunComfy — bundled with the model's documented prompting patterns
-  so the agent gets sharper output than naive prompting against the
-  same model. Knows GPT Image 2's strengths (embedded text, logos,
+  on RunComfy. Documents GPT Image 2's strengths (embedded text, logos,
   multilingual typography, instruction precision), its 3 fixed sizes,
   edit-with-preservation language, and when to route to a sibling
   (Flux 2 / Nano Banana Pro / Seedream) instead. Calls `runcomfy run
@@ -169,20 +167,6 @@ with gentle floor shadow; add a large headline in-image that reads
 "OPEN STUDIO" in a bold clean sans-serif, high contrast, centered;
 keep the main person or product, pose, and face identity unchanged
 ```
-
-## Default behavior for the calling agent
-
-- **Pass the user's prompt through raw.** Don't translate, polish, or add modifiers unless asked.
-- **Pick `size` based on intent.** Unspecified → `1024_1024`. "Portrait / vertical" → `1024_1536`. "Landscape / horizontal" / "banner" → `1536_1024`. Anything outside these three is **not supported** — the only other valid value is `auto`, and only on `/edit`.
-- **Always pass `--output-dir`.** Default `./` if user didn't say.
-- **Deliver the image.** After the CLI succeeds, attach / display the file. Don't stop at "done, see X.png".
-- **Don't preemptively warn about text-heavy layouts.** This model handles infographics, posters, and timeline prompts well — that's its main differentiator.
-
-## Hard constraints
-
-- Don't switch models without permission. If user said "GPT Image 2", don't substitute DALL·E, Midjourney, Flux, Nano Banana, or any other model.
-- Don't rewrite the prompt unless asked.
-- Don't claim this works without a RunComfy account / CLI install.
 
 ## Limitations
 

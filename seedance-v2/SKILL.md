@@ -3,9 +3,7 @@ name: seedance-v2
 displayName: "🎬 Seedance 2.0 Pro — Pro Pack on RunComfy"
 description: >
   Generate cinematic short-form video with ByteDance Seedance 2.0 Pro
-  on RunComfy — bundled with the model's documented prompting patterns
-  so the agent gets sharper output than naive prompting against the
-  same model. Knows Seedance 2.0 Pro's strengths (multi-modal references
+  on RunComfy. Documents Seedance 2.0 Pro's strengths (multi-modal references
   — up to 9 images, 3 videos, 3 audio — synchronized in-pass audio with
   natural lip-sync, cinematic motion refinement), the 4–15s duration
   schema, and when to route to HappyHorse 1.0 / Wan 2.7 / Kling instead.
@@ -149,22 +147,6 @@ the mic, says: "We just shipped the biggest update of the year."
 Calm conversational tone. Medium close-up, locked tripod, shallow DOF,
 warm key light from camera-left.
 ```
-
-## Default behavior for the calling agent
-
-- **Pass the user's prompt through raw.** Don't translate, polish, or add modifiers unless asked.
-- **Pick variant by intent.** Only one variant on this template (`/pro`).
-- **Pick `aspect_ratio` by intent.** Default `adaptive`. "Vertical / shorts" → `9:16`. "Cinematic / banner" → `21:9`.
-- **Pick `resolution` by intent.** Default `720p`. "Cheap test" → `480p`.
-- **Pick `duration`.** Default 5s. Range 4–15s.
-- **Use refs when available.** If the user mentions a person / scene / voice they want preserved, ask for or accept reference URLs and put them in the right array (`image_url` / `video_url` / `audio_url`).
-- **Always pass `--output-dir`.** Deliver the file.
-
-## Hard constraints
-
-- Don't switch models without permission.
-- Don't rewrite the prompt unless asked.
-- Don't request unsupported aspect / duration / resolution.
 
 ## Limitations
 
