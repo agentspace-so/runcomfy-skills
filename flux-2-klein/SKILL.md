@@ -47,7 +47,7 @@ If the user said "Flux 2 Klein" / "BFL Klein" / "flux klein" explicitly, route h
 
 ## Prerequisites
 
-1. **RunComfy CLI** — `npm i -g @runcomfy/cli` or `curl -fsSL https://runcomfy.com/install.sh | sh`
+1. **RunComfy CLI** — `npm i -g @runcomfy/cli`
 2. **RunComfy account** — `runcomfy login` opens a browser device-code flow.
 3. **CI / containers** — set `RUNCOMFY_TOKEN=<token>` instead of `runcomfy login`.
 

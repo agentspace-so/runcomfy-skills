@@ -46,7 +46,7 @@ The agent reads this table, classifies the user's intent, and picks the matching
 
 ## Prerequisites
 
-1. **RunComfy CLI** — `npm i -g @runcomfy/cli` or `curl -fsSL https://runcomfy.com/install.sh | sh`
+1. **RunComfy CLI** — `npm i -g @runcomfy/cli`
 2. **RunComfy account** — `runcomfy login` opens a browser device-code flow.
 3. **CI / containers** — set `RUNCOMFY_TOKEN=<token>`.
 4. **A source image URL** — JPEG/PNG/WebP, min 300px, ≤10MB; aspect 1:2.5 to 2.5:1 (HappyHorse) — other models have similar specs.
