@@ -29,9 +29,9 @@ npx skills add agentspace-so/runcomfy-skills --skill happyhorse-1-0 -g
 
 | You want | Use |
 |---|---|
-| Multi-shot story with character / wardrobe consistency | **HappyHorse 1.0** ✓ |
-| Native audio in the same generation pass | **HappyHorse 1.0** ✓ |
-| Currently-#1 blind-vote video model | **HappyHorse 1.0** ✓ |
+| Multi-shot story with character / wardrobe consistency | **HappyHorse 1.0** |
+| Native audio in the same generation pass | **HappyHorse 1.0** |
+| Currently-#1 blind-vote video model | **HappyHorse 1.0** |
 | Detailed lip-synced dialogue + reference video | Seedance 2.0 Pro |
 | Fine motion control + multi-reference conditioning | Wan 2.7 |
 | Ultra-fast iteration (sub-second per frame) | LTX 2 |

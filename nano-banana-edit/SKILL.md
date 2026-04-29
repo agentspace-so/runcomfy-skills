@@ -28,9 +28,9 @@ npx skills add agentspace-so/runcomfy-skills --skill nano-banana-edit -g
 
 | You want | Use |
 |---|---|
-| Preserve subject identity, swap background or clothing | **Nano Banana Edit** ✓ |
-| Edit up to 20 images consistently in one batch | **Nano Banana Edit** ✓ |
-| Localize edit to "X only" with spatial language | **Nano Banana Edit** ✓ |
+| Preserve subject identity, swap background or clothing | **Nano Banana Edit** |
+| Edit up to 20 images consistently in one batch | **Nano Banana Edit** |
+| Localize edit to "X only" with spatial language | **Nano Banana Edit** |
 | Edit multilingual text inside the image (signs, labels) | GPT Image 2 edit |
 | Single ref + precise local edit ("she's now holding X") | Flux Kontext |
 | Generate a new image from scratch | Nano Banana 2 t2i (sibling skill) |

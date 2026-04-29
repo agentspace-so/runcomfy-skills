@@ -34,9 +34,9 @@ Flux 2 Klein's distinct strength is **latency-first creative iteration**: sub-se
 
 | You want | Use |
 |---|---|
-| Real-time / live art-direction sessions | **Flux 2 Klein 4B** ✓ |
-| Fast iteration with strong detail at the end | **Flux 2 Klein 9B** ✓ |
-| Multi-reference brand styling with consistent looks | **Flux 2 Klein** ✓ |
+| Real-time / live art-direction sessions | **Flux 2 Klein 4B** |
+| Fast iteration with strong detail at the end | **Flux 2 Klein 9B** |
+| Multi-reference brand styling with consistent looks | **Flux 2 Klein** |
 | 2K–4K hero images, max resolution | Seedream 5 |
 | Maximum prompt adherence + extreme detail | Flux 2 Pro |
 | Embedded text, logos, multilingual signage | GPT Image 2 |

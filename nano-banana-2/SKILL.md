@@ -34,8 +34,8 @@ Nano Banana 2 is the **flash-tier** of the Google image-gen line. Pick it when i
 
 | You want | Use |
 |---|---|
-| Rapid drafts, social thumbnails, batch variants | **Nano Banana 2** ✓ |
-| In-image typography with predictable rendering | **Nano Banana 2** ✓ |
+| Rapid drafts, social thumbnails, batch variants | **Nano Banana 2** |
+| In-image typography with predictable rendering | **Nano Banana 2** |
 | Web-grounded image (current events / real entities) | **Nano Banana 2** + `enable_web_search` |
 | Image **edit** (preserve subject, swap background) | **Nano Banana Edit** (sibling skill) |
 | Heavy stylization, painterly look | Flux 2 |

@@ -28,9 +28,9 @@ npx skills add agentspace-so/runcomfy-skills --skill wan-2-7 -g
 
 | You want | Use |
 |---|---|
-| Lip-sync video to an audio track you supply | **Wan 2.7** ✓ (`audio_url`) |
-| Multi-reference fine motion control | **Wan 2.7** ✓ |
-| Smooth transitions, accurate motion physics | **Wan 2.7** ✓ |
+| Lip-sync video to an audio track you supply | **Wan 2.7** (`audio_url`) |
+| Multi-reference fine motion control | **Wan 2.7** |
+| Smooth transitions, accurate motion physics | **Wan 2.7** |
 | Currently-#1 blind-vote video model | HappyHorse 1.0 |
 | Multi-modal cinematic with image+video+audio refs + in-pass voice generation | Seedance 2.0 Pro |
 | Cinematic motion editing on existing footage | Kling Video O1 |

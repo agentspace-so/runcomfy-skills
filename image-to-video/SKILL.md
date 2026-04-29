@@ -94,7 +94,7 @@ runcomfy run happyhorse/happyhorse-1-0/image-to-video \
 
 **Model**: `wan-ai/wan-2-7/text-to-video` (NOT `/image-to-video` — Wan 2.7's t2v endpoint accepts an `audio_url` that drives lip-sync)
 
-> **Note on i2v with Wan 2.7**: Wan 2.7's primary i2v animation isn't on a dedicated endpoint here. For pure i2v (image animated by motion prompt only), prefer **HappyHorse i2v**. Use Wan 2.7 specifically when the user has a custom audio track they want lip-synced to a generated talking-head clip.
+**Note on i2v with Wan 2.7**: Wan 2.7's primary i2v animation isn't on a dedicated endpoint here. For pure i2v (image animated by motion prompt only), prefer **HappyHorse i2v**. Use Wan 2.7 specifically when the user has a custom audio track they want lip-synced to a generated talking-head clip.
 
 ### Schema (Wan 2.7 t2v with audio)
 

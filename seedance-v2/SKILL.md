@@ -31,9 +31,9 @@ Seedance 2.0 Pro's distinct strength is **multi-modal cinematic short-form**: co
 
 | You want | Use |
 |---|---|
-| Lip-synced spokesperson / dialogue ad | **Seedance 2.0 Pro** ✓ |
-| Multi-modal references (image + video + audio) | **Seedance 2.0 Pro** ✓ |
-| Brand-consistent multi-language narrative | **Seedance 2.0 Pro** ✓ |
+| Lip-synced spokesperson / dialogue ad | **Seedance 2.0 Pro** |
+| Multi-modal references (image + video + audio) | **Seedance 2.0 Pro** |
+| Brand-consistent multi-language narrative | **Seedance 2.0 Pro** |
 | Currently-#1 blind-vote video quality | HappyHorse 1.0 |
 | Audio-driven lip-sync from your own track | Wan 2.7 (`audio_url`) |
 | Motion editing on existing footage | Kling Video O1 |

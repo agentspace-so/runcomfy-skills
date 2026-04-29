@@ -31,9 +31,9 @@ GPT Image 2's distinct strength is **directive precision**: it follows multi-ele
 
 | You want | Use |
 |---|---|
-| Embedded text, logos, signage, multilingual typography | **GPT Image 2** ✓ |
-| Brand-safe, e-commerce / ad / UI mockup imagery | **GPT Image 2** ✓ |
-| Iterative refinement that holds composition stable | **GPT Image 2** ✓ |
+| Embedded text, logos, signage, multilingual typography | **GPT Image 2** |
+| Brand-safe, e-commerce / ad / UI mockup imagery | **GPT Image 2** |
+| Iterative refinement that holds composition stable | **GPT Image 2** |
 | Heavy stylization, painterly look | Flux 2 |
 | Hyperrealistic portrait | Nano Banana Pro |
 | Cinematic / aesthetic-first hero shots | Seedream 5 |

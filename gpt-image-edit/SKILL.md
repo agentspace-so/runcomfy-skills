@@ -31,10 +31,10 @@ npx skills add agentspace-so/runcomfy-skills --skill gpt-image-edit -g
 
 | You want | Use |
 |---|---|
-| Edit multilingual / embedded text in image | **GPT Image Edit** ✓ |
-| Identity preservation through translated headline variants | **GPT Image Edit** ✓ |
-| Layout-precise edit (move headline, swap CTA, etc.) | **GPT Image Edit** ✓ |
-| Up to 10 reference images | **GPT Image Edit** ✓ |
+| Edit multilingual / embedded text in image | **GPT Image Edit** |
+| Identity preservation through translated headline variants | **GPT Image Edit** |
+| Layout-precise edit (move headline, swap CTA, etc.) | **GPT Image Edit** |
+| Up to 10 reference images | **GPT Image Edit** |
 | Batch up to 20 images consistently | Nano Banana Edit |
 | Single-shot precise local edit, source-fidelity-first | Flux Kontext |
 | Generate from scratch with GPT Image 2 | sibling [`gpt-image-2`](../gpt-image-2) skill |
